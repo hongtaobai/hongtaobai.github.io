@@ -1,15 +1,25 @@
 <html>
 <head>
+
+<title>Main</title>
+
+<meta property="og:url" content="http://hongtaobai.github.io/ogtest/main.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="og test"/>
+<meta property="og:description" content="some open graph test"/>
+<!-- <meta property="og:image" content=""/> -->
+<meta property="fb:app_id" content="542058012665882"/>
+
 </head>
 <body>
-</body>
 
-<div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
-</div>
+<a href="mainV1.html">Main V1</a>
+<a href="mainV2.html">Main V2</a>
+
+<a href="#" id="mv1">Share Main V1</a>
+<a href="#" id="mv2">Share Main V2</a>
+
+</body>
 
 <!-- load Facebook SDK -->
 <script>
@@ -28,6 +38,23 @@
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+   
+   function hookShareUrl(id, url) {
+       var obj = document.getElementById(id);
+       obj.onclick = function() {
+            FB.ui({
+                method: "share",
+                href: url
+            }, function(res) {
+                alert(res);
+            });
+       }
+   }
+
+   hookShareUrl("mv1", "http://hongtaobai.github.io/ogtest/mainV1.html");
+   hookShareUrl("mv2", "http://hongtaobai.github.io/ogtest/mainV2.html");
+   
 </script>
 
 </html>
+
