@@ -1,0 +1,61 @@
+<html>
+<head>
+
+<title>Normal Website page</title>
+
+<meta property="og:url" content="http://hongtaobai.github.io/ogtest/normal.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="my site name"/>
+<meta property="og:title" content="my title"/>
+<meta property="og:description" content="my description"/>
+<meta property="og:image" content="http://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Sample-image.svg/703px-Sample-image.svg.png"/>
+<meta property="fb:app_id" content="542058012665882"/>
+
+</head>
+<body>
+
+<a href="NormalV1.html">Normal V1</a>
+<a href="NormalV2.html">Normal V2</a>
+
+<a href="#" id="mv1">Share Normal V1</a>
+<a href="#" id="mv2">Share Normal V2</a>
+
+</body>
+
+<!-- load Facebook SDK -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '542058012665882',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+   
+   function hookShareUrl(id, url) {
+       var obj = document.getElementById(id);
+       obj.onclick = function() {
+            FB.ui({
+                method: "share",
+                href: url
+            }, function(res) {
+                alert(res);
+            });
+       }
+   }
+
+   hookShareUrl("mv1", "http://hongtaobai.github.io/ogtest/normalV1.html");
+   hookShareUrl("mv2", "http://hongtaobai.github.io/ogtest/normalV2.html");
+   
+</script>
+
+</html>
+
