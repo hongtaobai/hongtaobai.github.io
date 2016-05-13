@@ -1,0 +1,69 @@
+<html>
+<head>
+
+<title>Video 1</title>
+
+<meta property="og:url" content="http://hongtaobai.github.io/ogtest/FollowProfileId.html">
+<meta property="og:site_name" content="my site name">
+<meta property="og:title" content="my title">
+<meta property="og:description" content="my description">
+
+<!-- image serves as a preview for the video -->
+<meta property="og:image" content="https://i.ytimg.com/vi/VzuBJTtwm3o/maxresdefault.jpg"/>
+<meta property="fb:app_id" content="542058012665882"/>
+
+<meta property="og:type" content="video">
+<meta property="og:video:url" content="https://www.youtube.com/v/VzuBJTtwm3o?version=3&amp;autohide=1">
+<meta property="og:video:type" content="application/x-shockwave-flash">
+<meta property="og:video:width" content="1280">
+<meta property="og:video:height" content="720">
+
+<!-- this is the id of github on facebook, found using this website https://lookup-id.com/ -->
+<meta property="fb:profile_id" content="262588213843476">
+
+</head>
+<body>
+
+This page will publish a Facebook Story that allows user to follow a Facebook profile with specific id (github)
+
+<!-- share button code -->
+<div class="fb-share-button" 
+    data-href="http://hongtaobai.github.io/ogtest/FollowProfileId.html" 
+    data-layout="button_count">
+</div>
+
+</body>
+
+<!-- load Facebook SDK -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '542058012665882',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+   
+   function hookShareUrl(id, url) {
+       var obj = document.getElementById(id);
+       obj.onclick = function() {
+            FB.ui({
+                method: "share",
+                href: url
+            }, function(res) {
+                alert(res);
+            });
+       }
+   }   
+</script>
+
+</html>
+
