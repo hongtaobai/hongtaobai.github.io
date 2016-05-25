@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <style>
+        #something
+        {
+            height: 100px;
+            width: 100px;
+            color: white;
+            background-color:green;
+            text-align: center;
+            line-height: 100px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="something">
+    </div>
+</body>
+
+    <script>
+        var count = 0;
+        function updatediv(evt) {
+            count++;
+            document.getElementById("something").innerHTML = count;
+        }
+        document.getElementById("something").onmousemove = updatediv;
+    </script>
+</html>
