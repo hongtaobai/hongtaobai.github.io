@@ -1,0 +1,66 @@
+<html>
+<head>
+
+<title>Video 1</title>
+
+<meta property="og:url" content="http://hongtaobai.github.io/ogtest/Video1.html">
+<meta property="og:site_name" content="my site name">
+<meta property="og:title" content="my title">
+<meta property="og:description" content="my description">
+
+<!-- image serves as a preview for the video -->
+<meta property="og:image" content="http://hongtaobai.github.io/content/image1.jpg"/>
+<meta property="fb:app_id" content="542058012665882"/>
+
+<meta property="og:type" content="video.other">
+<meta property="og:video:url" content="https://hongtaobai.github.io/content/video1.mp4">
+<meta property="og:video:type" content="video/mp4">
+<meta property="og:video:width" content="640">
+<meta property="og:video:height" content="360">
+
+</head>
+<body>
+
+This page has a video (without secure URL) in it (although you don't see it :-) ). Video is from Bing US Homepage on 2016-04-26. Try share it to facebook. <br/>
+
+<!-- share button code -->
+<div class="fb-share-button" 
+    data-href="http://hongtaobai.github.io/ogtest/Video1.html" 
+    data-layout="button_count">
+</div>
+
+</body>
+
+<!-- load Facebook SDK -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '542058012665882',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+   
+   function hookShareUrl(id, url) {
+       var obj = document.getElementById(id);
+       obj.onclick = function() {
+            FB.ui({
+                method: "share",
+                href: url
+            }, function(res) {
+                alert(res);
+            });
+       }
+   }   
+</script>
+
+</html>
+
