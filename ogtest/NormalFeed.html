@@ -48,7 +48,9 @@
                 link: url
             }, function(res) {
                 debugger;
-                alert(res);
+                for (var p in res) {
+                  console.log(p + " = " + res[p]);
+                }
             });
        }
    }
