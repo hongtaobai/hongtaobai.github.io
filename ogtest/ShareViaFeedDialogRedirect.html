@@ -26,10 +26,10 @@ window.OnShareResult = function (ret) {
 }
 
 var shareBtn = document.getElementById("share");
-shareBtn.onClick = function() {
+shareBtn.onclick = function() {
   var encodedUrl = encodeURIComponent("http://hongtaobai.github.io/ogtest/ShareViaFeedDialogRedirect.html");
   var encodedRedirectUrl = encodeURIComponent("http://hongtaobai.github.io/ogtest/FacebookRedirect.html");
-  var url = "https://www.facebook.com/dialog/feed?link=" + encodedUrl + "&redirect_uri=" + encodedRedirectUrl;
+  var url = "https://www.facebook.com/dialog/feed?app_id=542058012665882&link=" + encodedUrl + "&redirect_uri=" + encodedRedirectUrl;
   window.open(url, "_blank", "width=800,height=600");
 }
    

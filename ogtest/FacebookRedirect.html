@@ -17,9 +17,9 @@ function processShareResult() {
   var postid = null;
   var query = window.location.search;
   if (query) {
-    var parts = query.split("&");
+    var parts = query.substr(1).split("&");
     for(var p in parts) {
-     var kv = p.split("=");
+     var kv = parts[p].split("=");
      if (kv.length == 2) {
        if (kv[0] == "post_id") {
          postid = kv[1]; 
@@ -34,6 +34,8 @@ function processShareResult() {
     }
   }
 }
+
+processShareResult();
    
 </script>
 
