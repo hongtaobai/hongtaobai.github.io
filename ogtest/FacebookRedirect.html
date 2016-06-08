@@ -27,15 +27,17 @@ function processShareResult() {
      }
     }    
   }
-  
-  if (postid) {
-    if (window.opener && window.opener.OnShareResult && typeof window.opener.OnShareResult == "function") {
-      window.opener.OnShareResult(postid);
-    }
-  }
+
+  if (window.opener && window.opener.OnShareResult && typeof window.opener.OnShareResult == "function") {
+    window.opener.OnShareResult(postid ? "success with post id: " + postid : "failed or canceled");
+  }  
 }
 
 processShareResult();
+
+setTimeout(function() {
+  window.close();
+}, 100);
    
 </script>
 
