@@ -1,0 +1,41 @@
+<html>
+<head>
+
+<title>Facebook Redirect</title>
+
+</head>
+<body>
+
+This page will close itself.
+
+</body>
+
+<!-- load Facebook SDK -->
+<script>
+
+function processShareResult() {
+  var postid = null;
+  var query = window.location.search;
+  if (query) {
+    var parts = query.split("&");
+    for(var p in parts) {
+     var kv = p.split("=");
+     if (kv.length == 2) {
+       if (kv[0] == "post_id") {
+         postid = kv[1]; 
+       }
+     }
+    }    
+  }
+  
+  if (postid) {
+    if (window.opener && windows.opener.OnShareResult && typeof window.opener.OnShareResult == "function") {
+      window.opener.OnShareResult(postid);
+    }
+  }
+}
+   
+</script>
+
+</html>
+
