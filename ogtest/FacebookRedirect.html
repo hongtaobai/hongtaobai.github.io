@@ -29,7 +29,7 @@ function processShareResult() {
   }
   
   if (postid) {
-    if (window.opener && window.opener.OnShareResult && typeof window.window.OnShareResult == "function") {
+    if (window.opener && window.opener.OnShareResult && typeof window.opener.OnShareResult == "function") {
       window.opener.OnShareResult(postid);
     }
   }
