@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<a href="#" id="share">Click to Share</a>
+<a href="#" id="share">Click to Share!</a>
 
 </body>
 
@@ -28,7 +28,7 @@
 <script>
 
 window.OnShareResult = function (ret) {
-    // alert("ShareResult is " + ret);
+    throw {"error": "test error"};
 }
 
 var shareBtn = document.getElementById("share");
