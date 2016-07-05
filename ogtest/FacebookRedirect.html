@@ -33,11 +33,19 @@ function processShareResult() {
   }  
 }
 
-processShareResult();
-
-setTimeout(function() {
-  window.close();
-}, 3000);
+try
+{
+  processShareResult();
+}
+catch()
+{
+}
+finally 
+{
+  setTimeout(function() {
+    window.close();
+  }, 3000);
+}
    
 </script>
 
