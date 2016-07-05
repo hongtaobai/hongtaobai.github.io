@@ -1,0 +1,17 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <a href="javascript:test1()">open blank page then close in 3 seconds</a>
+</body>
+    <script>
+        function test1() {
+            var x = window.open("about:blank", "_blank", "width=800,height=600");
+            setTimeout(function() {
+                x.close();
+            }, 3000)
+        }        
+    </script>
+</html>
