@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>This page will close itself in 3 seconds</h1>
+<h1>This page will close itself in 3 seconds!</h1>
 
 </body>
 
@@ -43,6 +43,7 @@ catch(ex)
 finally 
 {
   setTimeout(function() {
+    window.open("", "_self", "");
     window.close();
   }, 3000);
 }
