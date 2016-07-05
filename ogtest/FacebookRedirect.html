@@ -6,7 +6,7 @@
 </head>
 <body>
 
-This page will close itself.
+<h1>This page will close itself in 3 seconds</h1>
 
 </body>
 
@@ -36,9 +36,8 @@ function processShareResult() {
 processShareResult();
 
 setTimeout(function() {
-  console.log("close window");
-  // window.close();
-}, 100);
+  window.close();
+}, 3000);
    
 </script>
 
