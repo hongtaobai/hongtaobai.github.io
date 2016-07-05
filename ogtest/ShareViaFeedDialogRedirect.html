@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<a href="#" id="share">Click to Share!</a>
+<a href="#" id="share">Click to Share!!</a>
 
 </body>
 
@@ -35,7 +35,7 @@ var shareBtn = document.getElementById("share");
 shareBtn.onclick = function() {
   var cachebuster = (new Date()).valueOf(); 
   var encodedUrl = encodeURIComponent("http://hongtaobai.github.io/ogtest/ShareViaFeedDialogRedirect.html");
-  var encodedRedirectUrl = encodeURIComponent("http://hongtaobai.github.io/ogtest/FacebookRedirect.html?cb=" + cachebuster);
+  var encodedRedirectUrl = encodeURIComponent("http://hongtaobai.github.io/ogtest/FacebookRedirect2.html?cb=" + cachebuster);
   var url = "https://www.facebook.com/dialog/feed?app_id=542058012665882&link=" + encodedUrl + "&redirect_uri=" + encodedRedirectUrl;
   window.open(url, "_blank", "width=800,height=600");
 }
