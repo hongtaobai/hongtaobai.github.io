@@ -1,10 +1,18 @@
 <html>
 
 <head>
+    <style>
+        a {
+            display: block; 
+        }
+    </style>
 </head>
 
 <body>
-    <a href="javascript:test1()">open blank page then close in 3 seconds</a>
+    <h1>
+        <a href="javascript:test1()">Open blank page then close it in 3 seconds</a>
+        <a href="javascript:test2">Open a page that tries to close itself in 3 seconds</a>
+    </h1>
 </body>
     <script>
         function test1() {
@@ -12,6 +20,9 @@
             setTimeout(function() {
                 x.close();
             }, 3000)
+        }
+        function test2() {
+            var x = window.open("closeself.html", "_blank", "width=800,height=600");
         }        
     </script>
 </html>
