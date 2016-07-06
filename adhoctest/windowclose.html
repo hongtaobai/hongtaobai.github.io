@@ -12,6 +12,7 @@
     <h1>
         <a href="javascript:test1()">Open blank page then close it in 3 seconds</a>
         <a href="javascript:test2()">Open a page that tries to close itself in 3 seconds</a>
+        <a href="javascript:test3()">Open a page (htbai-dpc01/share/fbre) that tries to close itself</a>
     </h1>
 </body>
     <script>
@@ -23,6 +24,9 @@
         }
         function test2() {
             var x = window.open("closeself.html", "_blank", "width=800,height=600");
-        }        
+        }    
+        function test3() {
+            var x = window.open("http://htbai-dpc01/share/fbre", "_blank", "width=800,height=600");
+        }
     </script>
 </html>
