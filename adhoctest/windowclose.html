@@ -17,13 +17,17 @@
     <script>
         function test1() {
             var x = window.open("about:blank", "_blank", "width=800,height=600");
+            alert("windows is closed: " + x.closed);
             setTimeout(function() {
                 x.close();
-                alert("windows is closed: " + x.closed);
             }, 3000);
+            setTimeout(function() {
+                alert("windows is closed: " + x.closed);
+            }, 5000);            
         }
         function test2() {
             var x = window.open("closeself.html", "_blank", "width=800,height=600");
+            alert("windows is closed: " + x.closed);
             setTimeout(function() {
                 alert("windows is closed: " + x.closed);
             }, 5000);            
