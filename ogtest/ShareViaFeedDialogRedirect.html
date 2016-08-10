@@ -1,7 +1,7 @@
 <html>
 <head>
 
-<!--<title>default title</title>-->
+<title>default title</title>
 <style>
     a {
         display: block;
@@ -9,13 +9,13 @@
     }
 </style>
 
-<!--<meta content="default description" name="description" />-->
+<meta content="default description" name="description" />
 
 <meta property="og:url" content="http://hongtaobai.github.io/ogtest/ShareViaFeedDialogRedirect.html"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="my site name"/>
-<!--<meta property="og:title" content=" "/>
-<meta property="og:description" content=" "/>-->
+<meta property="og:title" content="og title"/>
+<meta property="og:description" content="og description "/>
 <meta property="og:image" content="http://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Sample-image.svg/703px-Sample-image.svg.png"/>
 <meta property="fb:app_id" content="542058012665882"/>
 
@@ -38,7 +38,7 @@ shareBtn.onclick = function() {
   var cachebuster = (new Date()).valueOf(); 
   var encodedUrl = encodeURIComponent("http://hongtaobai.github.io/ogtest/ShareViaFeedDialogRedirect.html");
   var encodedRedirectUrl = encodeURIComponent("http://hongtaobai.github.io/ogtest/FacebookRedirect.html?cb=" + cachebuster);
-  var url = "https://www.facebook.com/dialog/feed?app_id=542058012665882&link=" + encodedUrl + "&redirect_uri=" + encodedRedirectUrl;
+  var url = "https://www.facebook.com/dialog/feed?app_id=542058012665882&link=" + encodedUrl + "&redirect_uri=" + encodedRedirectUrl + "&caption=new_caption";
   window.open(url, "_blank", "width=800,height=600");
 }
    
