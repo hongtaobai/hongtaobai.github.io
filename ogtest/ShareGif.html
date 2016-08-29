@@ -37,7 +37,7 @@ window.OnShareResult = function (ret) {
 var shareBtn = document.getElementById("share");
 shareBtn.onclick = function() {
   var cachebuster = (new Date()).valueOf(); 
-  var encodedUrl = encodeURIComponent("http://hongtaobai.github.io/ogtest/ShareViaFeedDialogRedirect.html");
+  var encodedUrl = encodeURIComponent("http://hongtaobai.github.io/ogtest/ShareGif.html");
   var encodedRedirectUrl = encodeURIComponent("http://hongtaobai.github.io/ogtest/FacebookRedirect.html?cb=" + cachebuster);
   var url = "https://www.facebook.com/dialog/feed?app_id=542058012665882&link=" + encodedUrl + "&redirect_uri=" + encodedRedirectUrl + "&caption=new_caption";
   window.open(url, "_blank", "width=800,height=600");
