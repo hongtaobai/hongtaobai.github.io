@@ -23,6 +23,11 @@
         height: 100%;
     }
 
+    .tinyplayer {
+        width: 1px;
+        height: 1px;
+    }
+
     #closebtn {
         position: absolute;
         top: 16px;
@@ -44,13 +49,11 @@ This is a page to test video player on mobile.
 <script>
     var iOS= navigator.userAgent.toLowerCase().match(/iphone|ipod|ipad/);
     if (iOS) {
+        $("#player").addClass("tinyplayer");
+
         $("#player").on("webkitendfullscreen", function() {
             stopvideo();
         });
-
-        $("#player").on("webkitenterfullscreen", function() {
-            $("#playerContainer").show();
-        });        
     }
     else {
         $("#player").addClass("fullsizeplayer");
@@ -89,14 +92,7 @@ This is a page to test video player on mobile.
 
         // show player container is not iOS
         // show player container when play started when on iOS
-        if (!iOS) {
-            $("#playerContainer").show();
-        }
-        else {
-            // player.one("play", function() {
-            //     $("#playerContainer").show();
-            // })
-        }
+        $("#playerContainer").show();
     });
 
     function stopvideo() {
