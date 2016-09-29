@@ -8,6 +8,11 @@
         font-size: 24px;
     }
 
+    #playbtn {
+        text-align: center;
+        margin-top: 100px;
+    }
+
     #playerContainer {
         display: none;
         position: relative;
@@ -28,7 +33,7 @@
 </head>
 <body>
 This is a page to test video player on mobile. 
-<a id="playbtn">Play</a>
+<a id="playbtn">Play Video</a>
 <div id="playerContainer">
     <video id="player" data-src="https://az29176.vo.msecnd.net/videocontent/MontVentoux_Sunrise_Nimia_4K_461362_1080_HD_EN-US.mp4"></video>
     <a id="closebtn">close</a>
@@ -36,9 +41,20 @@ This is a page to test video player on mobile.
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
 <script src="../content/jquery.fullscreen.js"></script>
 <script>
+    var iOS= navigator.userAgent.toLowerCase().match(/iphone|ipod|ipad/);
+
     $("#playbtn").click(function() {
-        $("#playerContainer").fullScreen();
-        $("#playerContainer").toggle();
+        if (!iOS) {
+            $("#playerContainer").fullScreen({
+                "callback": function(fullscreen) {
+                    if (!fullscreen) {
+                        stopvideo();
+                    }
+                }
+            });
+        }
+
+        $("#playerContainer").show();
 
         var player = $("#player"); 
         if (!player.attr("src")) {
@@ -53,10 +69,18 @@ This is a page to test video player on mobile.
     });
 
     $("#closebtn").click(function() {
-        $("#player").get(0).pause();
-        $("#playerContainer").fullScreen();
-        $("#playerContainer").toggle();
+        if (!iOS) {
+            $("#playerContainer").fullScreen();
+        }
+
+        stopvideo();
     })
+
+    function stopvideo() {
+        $("#player").get(0).pause();
+        $("#playerContainer").hide();
+    }
+    
 </script>
 </body>
 </html>
