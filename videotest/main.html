@@ -42,19 +42,20 @@ This is a page to test video player on mobile.
 <script src="../content/jquery.fullscreen.js"></script>
 <script>
     var iOS= navigator.userAgent.toLowerCase().match(/iphone|ipod|ipad/);
-    if (!iOS) {
+    if (iOS) {
+
+    }
+    else {
         $("#player").addClass("fullsizeplayer");
+
+        $("#closebtn").click(function() {
+            $("#playerContainer").fullScreen();
+            stopvideo();
+        });
     }
 
-    $("#player").on("play", function() {
-        $(this).show();
-    });
-
-    $("#player").on("pause", function() {
-        $(this).hide();
-    });    
-
     $("#playbtn").click(function() {
+        // full screen player container if not iOS
         if (!iOS) {
             $("#playerContainer").fullScreen({
                 "callback": function(fullscreen) {
@@ -65,27 +66,31 @@ This is a page to test video player on mobile.
             });
         }
 
-        $("#playerContainer").show();
-
+        // prepare player
         var player = $("#player"); 
         if (!player.attr("src")) {
             var src = player.attr("data-src");
             player.attr("src", src);
+            player.attr("loop", true);            
         }
         else {
             player.get(0).load();
         }
-        player.attr("loop", true);
-        player.get(0).play();        
-    });
 
-    $("#closebtn").click(function() {
+        // reques to play
+        player.get(0).play();
+
+        // show player container is not iOS
+        // show player container when play started when on iOS
         if (!iOS) {
-            $("#playerContainer").fullScreen();
+            $("#playerContainer").show();
         }
-
-        stopvideo();
-    })
+        else {
+            player.one("play", function() {
+                $("#playerContainer").show();
+            })
+        }
+    });
 
     function stopvideo() {
         $("#player").get(0).pause();
