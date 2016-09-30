@@ -1,0 +1,49 @@
+<html>
+<head>
+
+<title>default title</title>
+<style>
+    a {
+        display: block;
+        font-size: 24px;
+    }
+</style>
+
+<meta content="default description" name="description" />
+
+<meta property="og:url" content="http://hongtaobai.github.io/ogtest/ShareGif1.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="my site name"/>
+<meta property="og:title" content="og title"/>
+<!--<meta property="og:description" content="og description "/>-->
+<meta property="og:description" content="This is not a video"/>
+<meta property="og:image" content="http://hongtaobai.github.io/content/testgif.gif"/>
+<meta property="fb:app_id" content="542058012665882"/>
+
+</head>
+<body>
+
+<a href="#" id="share">Click to Share!!</a>
+
+</body>
+
+<!-- load Facebook SDK -->
+<script>
+
+window.OnShareResult = function (ret) {
+    throw {"error": "test error"};
+}
+
+var shareBtn = document.getElementById("share");
+shareBtn.onclick = function() {
+  var cachebuster = (new Date()).valueOf(); 
+  var encodedUrl = encodeURIComponent("http://hongtaobai.github.io/ogtest/ShareGif.html");
+  var encodedRedirectUrl = encodeURIComponent("http://hongtaobai.github.io/ogtest/FacebookRedirect.html?cb=" + cachebuster);
+  var url = "https://www.facebook.com/dialog/feed?app_id=542058012665882&link=" + encodedUrl + "&redirect_uri=" + encodedRedirectUrl + "&caption=new_caption";
+  window.open(url, "_blank", "width=800,height=600");
+}
+   
+</script>
+
+</html>
+
