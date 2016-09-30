@@ -14,7 +14,7 @@
     }
 
     #playerContainer {
-        display: block;
+        display: none;
         position: relative;
     }
 
@@ -40,7 +40,7 @@
 </head>
 <body>
 This is a page to test video player on mobile. 
-<a id="playbtn">Play Video 2</a>
+<a id="playbtn">Play Video</a>
 <div id="playerContainer">
     <video id="player" data-src="https://az29176.vo.msecnd.net/videocontent/MontVentoux_Sunrise_Nimia_4K_461362_1080_HD_EN-US.mp4"></video>
     <a id="closebtn">close</a>
@@ -92,7 +92,9 @@ This is a page to test video player on mobile.
 
         // show player container is not iOS
         // show player container when play started when on iOS
-        $("#playerContainer").show();
+        setTimeout(function() {
+            $("#playerContainer").show();
+        }, 200);        
     });
 
     function stopvideo() {
