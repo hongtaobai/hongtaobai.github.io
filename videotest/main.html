@@ -15,12 +15,15 @@
 
     #playerContainer {
         display: block;
+        background: red;
         position: relative;
     }
 
     .tinycontainer {
-        width: 1px;
-        height: 1px;
+        margin-left: 50%;
+        margin-right: 50%;
+        width: 2px;
+        height: 2px;
     }
 
     #player {
@@ -48,6 +51,7 @@ This is a page to test video player on mobile.
 <script>
     var iOS= navigator.userAgent.toLowerCase().match(/iphone|ipod|ipad/);
     if (iOS) {
+        $("#closebtn").hide();
         $("#playerContainer").addClass("tinycontainer");
 
         $("#player").on("webkitendfullscreen", function() {
