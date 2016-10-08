@@ -1,0 +1,65 @@
+<!--
+Event sequences of this app:
+1. All DOM elements are positioned correctlly when the app is initialized, but all of them are invisible 
+2. Video starts loading on event onRBComplete, and fires AppReady event when loaded
+3. Open app button shows on event AppReady
+4. Open app button fires event OpenApp
+5. On event Open App, app container shows, video start play, open app button hides
+6. Hide/show bunting buttons fires HideBrunting/ShowBrunting event when clicks
+7. Brunting hides/shows on event HideBrunting/ShowBrunting, so do hide/show buntong buttons
+8. Similiar behaviors applies to mute/unmute buttons
+9. Plane button fires event ReplayVideo on click, that triggers video to replay
+10. Close app button fires Closeapp event on click, that stops he video, hide the app container and show the open app button
+-->
+
+<div class="approot">
+    <!-- this is the app container, invisible by default -->
+    <div data-ShowOnEvent="OpenApp" data-HideOnEvent="CloseApp">
+
+        <!-- this is the bunting -->
+        <div class="Bunting" 
+            data-Position="DockTop" 
+            data-ShowOnEvent="ShowBunting" 
+            data-HideOnEvent="HideBunting">
+            ...
+        </div>
+
+        <!-- this is the video -->
+        <video class="video"
+            data-Position="ImageOfTheDay"
+            data-VideoSrc="..."
+            data-LoadVideoOnEvent="onRBComplete"
+            data-FireEventOnCanPlayThrough="AppReady"
+            data-PlayOnEvent="OpenApp,ReplayVideo"
+            data-StopOnEvent="CloseApp"
+            data-MuteOnEvent="MuteVideo"
+            data-UnmuteOnEvent="UnmuteVideo">
+            ...
+        </video>
+
+        <!-- this is app buttons -->
+        <div class="control" data-Position="CenterOfPage">
+            
+            <!-- buttons to hide/show bunting -->
+            <div class="hideBuntingBtn" data-FireEventOnClick="HideBunting" data-ShowOnEvent="ShowBunting" data-HideOnEvent="HideBunting">...</div>
+            <div class="showBuntingBtn" data-FireEventOnClick="ShowBunting" data-ShowOnEvent="HideBunting" data-HideOnEvent="ShowBunting">...</div>            
+
+            <!-- buttons to mute/unmute video -->
+            <div class="muteVideoBtn" data-FireEventOnClick="MuteVideo" data-ShowOnEvent="UnmuteVideo" data-HideOnEvent="MuteVideo">...</div>
+            <div class="unmuteVideoBtn" data-FireEventOnClick="UnmuteVideo" data-ShowOnEvent="MuteVideo" data-HideOnEvent="UnmuteVideo">...</div>
+
+            <!-- buttons to replay video and close app -->
+            <div class="planeBtn" data-FireEventOnClick="ReplayVideo">...</div>
+            <div class="closeBtn" data-FireEventOnClick="CloseApp">...</div>
+        </div>
+    </div>
+    
+    <!-- this is the button to open the app, invisible by default -->
+    <div class="openbtn" 
+        data-Position="MediaControl"
+        data-ShowOnEvent="AppReady,CloseApp" 
+        data-FireEventOnClick="OpenApp"
+        data-HideOnEvent="OpenApp">
+        ...
+    </div>
+</div>
