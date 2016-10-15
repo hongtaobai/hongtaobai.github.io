@@ -10,29 +10,35 @@
 
 <body>
     <div id="info"> </div>
-    <div id="login"> Login via Facebook now </div>
+    <div id="login" onclick="onLogin();"> Login via Facebook now </div>
 
 <script>
+  function onLogin() {
+    FB.login(function(r) {
+        loginStatusChanged(r);    
+    }, 
+    {scope: 'public_profile,email'});
+  }
+
+  function onLoginSuccess() {
+    FB.api("/me?fields=name,first_name,last_name,email", function(r) {
+        var str = "Hi " + r.name;
+        if (r.email) {
+            str += ", your email address is: " + r.email;
+        }else {
+            str += ", you didn't allow us to get your email address, it is ok!";
+        }
+        document.getElementById("info").innerHTML = str;
+        document.getElementById("login").style.display = "none";
+    });
+  }
+
   function loginStatusChanged(r) {
-    if (response.status === 'connected') {
-        FB.api("/me?fields=name,first_name,last_name,email", function(r) {
-            var str = "Hi " + r.name;
-            if (r.email) {
-                str += ", your email address is: " + r.email;
-            }else {
-                str += ", you didn't allow us to get your email address, it is ok!";
-            }
-            document.getElementById("info").innerHTML = str;
-            document.getElementById("login").style.display = "none";
-        })
+    if (r.status === 'connected') {
+        onLoginSuccess();
     } else {
         var login = document.getElementById("login");
         login.style.display = "block";
-        login.onclick = function() {
-            FB.login(function(r) {
-	            loginStatusChanged(r);    
-            }, {scope: 'public_profile,email'});
-        };
     }      
   }
 
