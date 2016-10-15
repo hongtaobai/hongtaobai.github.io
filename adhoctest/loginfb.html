@@ -44,6 +44,7 @@
     if (r.status === 'connected') {
         onLoginSuccess();
     } else {
+        document.getElementById("info").innerHTML = "You are not signed in yet!";
         document.getElementById("login").style.display = "block";
         document.getElementById("logout").style.display = "none";
     }      
