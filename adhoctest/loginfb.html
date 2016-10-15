@@ -2,14 +2,40 @@
 
 <head>
     <style>
+        #login{ 
+            display: none;
+        }
     </style>
 </head>
 
 <body>
-    <div id="something">
-    </div>
+    <div id="info"> </div>
+    <div id="login"> Login via Facebook now </div>
 
 <script>
+  function loginStatusChanged(r) {
+    if (response.status === 'connected') {
+        FB.api("/me?fields=name,first_name,last_name,email", function(r) {
+            var str = "Hi " + r.name;
+            if (r.email) {
+                str += ", your email address is: " + r.email;
+            }else {
+                str += ", you didn't allow us to get your email address, it is ok!";
+            }
+            document.getElementById("info").innerHTML = str;
+            document.getElementById("login").style.display = "none";
+        })
+    } else {
+        var login = document.getElementById("login");
+        login.style.display = "block";
+        login.onclick = function() {
+            FB.login(function(r) {
+	            loginStatusChanged(r);    
+            }, {scope: 'public_profile,email'});
+        };
+    }      
+  }
+
   // initialize FB SDK
   window.fbAsyncInit = function() {
     FB.init({
@@ -18,6 +44,10 @@
                             // the session
         xfbml      : true,  // parse social plugins on this page
         version    : 'v2.5' // use graph api version 2.5
+    });
+
+    FB.getLoginStatus(function(r) {
+        loginStatusChanged(r);
     })
   };
 
@@ -29,6 +59,8 @@
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
+
+
 
 </script>
 </body>
