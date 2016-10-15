@@ -23,7 +23,9 @@
 
   function onLogout() {
       FB.logout();
-      FB.getLoginStatus(loginStatusChanged);
+      setTimeout(function() {
+          FB.getLoginStatus(loginStatusChanged);
+      }, 1000);      
   }  
 
   function onLoginSuccess() {
