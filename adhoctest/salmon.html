@@ -24,8 +24,8 @@
 </head>
 
 <body>
-	<img class="slide" src="../content/sockeye-salmon.jpg" />
-	<img class="slide" src="../content/sockeye-salmon-red.jpg" />
+	<img id="pic1" class="slide" src="../content/sockeye-salmon.jpg" />
+	<img id="pic2" class="slide" src="../content/sockeye-salmon-red.jpg" />
 	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>	
 	<script>
@@ -40,8 +40,31 @@
 				});				
 			}, 8000);			
 		}
+	
+		function step1() {
+			$("#pic1").fadeIn(2000).delay(1000).fadeOut(2000);
+			return $("#pic2").delay(3000).fadeIn(2000).delay(1000).fadeOut(1000);
+		}
 		
-		$(document).ready(init);
+		function step2() {
+			return $("#pic1").add($("#pic2")).css("position", "relative").delay(1000).fadeIn(3000);
+		}
+		
+		function run(steps, current) {
+			var len = steps.length;
+			if (current < len) {
+				var step = steps[current];
+				step().queue(function(next) {
+					run(steps, current + 1);
+					next();
+				});
+			}
+		}
+		
+		$(document).ready(function() {
+			var steps = [step1, step2];
+			run(steps, 0);
+		});
 	</script>
 </body>
 </html>
