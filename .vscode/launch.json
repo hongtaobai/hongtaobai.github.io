@@ -2,10 +2,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch index.html (without sourcemaps)",
+            "name": "Launch main",
             "type": "chrome",
-            "request": "launch",
-            "file": "${workspaceRoot}/index.html"
-        }       
+            "file": "${workspaceRoot}/index.html",
+            "request": "launch"
+        },
+        {
+            "name": "Launch adhoc main",
+            "type": "chrome",
+            "file": "${workspaceRoot}/adhoctest/main.html",
+            "request": "launch"
+        }        
     ]
 }
