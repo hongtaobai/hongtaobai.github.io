@@ -57,6 +57,8 @@
       
     FB.api("/me?fields=" + fields.join(','), function(r) {
         var str = "Hi " + r.name + ". Here is what we know about you from Facebook:";
+        str += "<table>";
+        str += "<tr><td>Field</td><td>Value</td></tr>";
         for(var i in fields) {
             var f = fields[i];
             var v = r[f] || "";
@@ -72,8 +74,12 @@
                 v = "<img src='" + v + "'/>";
             }
 
-            str += "<br/><b>" + f + ":</b> " + v;
+            str += "<tr>";
+            str += "<td>" + f + "</td>";
+            str += "<td>" + v + "</td>";
+            str += "</tr>";
         }
+        str += "</table>";
 
         document.getElementById("info").innerHTML = str;
         document.getElementById("login1").style.display = "none";
