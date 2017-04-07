@@ -2,7 +2,7 @@
 
 <head>
     <style>
-        #login, #logout{ 
+        .login, #logout{ 
             display: none;
         }
     </style>
@@ -10,8 +10,8 @@
 
 <body>
     <div id="info"> </div>
-    <button id="login1" onclick="onLogin1();"> Sign in via Facebook now (default) </button>
-    <button id="login2" onclick="onLogin2();"> Sign in via Facebook now (ask for email permession) </button>
+    <button id="login1" class="login" onclick="onLogin1();"> Sign in via Facebook now (default) </button>
+    <button id="login2" class="login" onclick="onLogin2();"> Sign in via Facebook now (ask for email permession) </button>
     <button id="logout" onclick="onLogout();"> Sign out now </button>
 
 <script>
@@ -56,12 +56,10 @@
     var fields = ["id", "cover", "name", "first_name", "last_name", "age_range", "link", "gender", "locale", "picture", "timezone", "updated_time", "verified", "email"];
       
     FB.api("/me?fields=" + fields.join(','), function(r) {
-        var str = "Hi " + r.name;
-        str += ". Here is what we know about you from Facebook:"
+        var str = "Hi " + r.name + ". Here is what we know about you from Facebook:";
         for(var f in fields) {
-            r += "<br/>" + fields[f] + ": " + r[fields[f]] || "";
+            str += "<br/>" + fields[f] + ": " + r[fields[f]] || "";
         }
-        
         document.getElementById("info").innerHTML = str;
         document.getElementById("login1").style.display = "none";
         document.getElementById("login2").style.display = "none";
