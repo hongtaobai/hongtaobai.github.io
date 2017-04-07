@@ -57,9 +57,24 @@
       
     FB.api("/me?fields=" + fields.join(','), function(r) {
         var str = "Hi " + r.name + ". Here is what we know about you from Facebook:";
-        for(var f in fields) {
-            str += "<br/>" + fields[f] + ": " + r[fields[f]] || "";
+        for(var i in fields) {
+            var f = fields[i];
+            var v = r[f] || "";
+            if (f == "cover") {
+                v = v.source || "";
+                v = "<img src='" + v + "'/>";
+            }
+            else if (f == "age_range") {
+                v = (v.min || "") + " - " + (v.max || "");
+            }
+            else if (f == "picture") {
+                v = v.data && v.data.url || "";
+                v = "<img src='" + v + "'/>";
+            }
+
+            str += "<br/><b?" + f + ":</b> " + v;
         }
+        
         document.getElementById("info").innerHTML = str;
         document.getElementById("login1").style.display = "none";
         document.getElementById("login2").style.display = "none";
