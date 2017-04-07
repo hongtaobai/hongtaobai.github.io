@@ -38,13 +38,30 @@
   }  
 
   function onLoginSuccess() {
-    FB.api("/me?fields=name,first_name,last_name,email", function(r) {
+    /* public profile
+        id
+        cover
+        name
+        first_name
+        last_name
+        age_range
+        link
+        gender
+        locale
+        picture
+        timezone
+        updated_time
+        verified
+    */      
+    var fields = ["id", "cover", "name", "first_name", "last_name", "age_range", "link", "gender", "locale", "picture", "timezone", "updated_time", "verified", "email"];
+      
+    FB.api("/me?fields=" + fields.join(','), function(r) {
         var str = "Hi " + r.name;
-        if (r.email) {
-            str += ", your email address is: " + r.email;
-        }else {
-            str += ", you didn't allow us to get your email address, it is ok!";
+        str += ". Here is what we know about you from Facebook:"
+        for(var f in fields) {
+            r += "<br/>" + fields[f] + ": " + r[fields[f]] || "";
         }
+        
         document.getElementById("info").innerHTML = str;
         document.getElementById("login1").style.display = "none";
         document.getElementById("login2").style.display = "none";
